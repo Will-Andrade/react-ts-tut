@@ -1,14 +1,13 @@
 import React from "react";
 
-export const Button = (props: {}) => {
-  return <button>{props.children}</button>;
+export const Button = ({ children }: { children: React.ReactNode }) => {
+  return <button>{children}</button>;
 };
 
 const Parent = () => {
   return (
     <>
-      {/* @ts-expect-error */}
-      <Button></Button>
+      <Button>Click me</Button>
       <Button>Hello world!</Button>
     </>
   );

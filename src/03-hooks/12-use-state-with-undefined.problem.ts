@@ -11,7 +11,11 @@ const fetchData = () => {
 };
 
 export const Component = () => {
-  const [data, setData] = useState();
+  //? Solution 1
+  // const [data, setData] = useState<Data | undefined>(undefined);
+
+  //? Solution 2
+  const [data, setData] = useState<Data>();
 
   useEffect(() => {
     fetchData().then((val) => {

@@ -4,7 +4,7 @@ export const NavBar = (props: {
   title: string;
   links: string[];
   children: React.ReactNode;
-}) => {
+}): JSX.Element => {
   return <div>Some content</div>;
 };
 
@@ -12,7 +12,7 @@ export const NavBar = (props: {
 
 import { Equal, Expect } from "../helpers/type-utils";
 
-type NavBarProps = unknown;
+type NavBarProps = React.ComponentProps<typeof NavBar>;
 
 type test = Expect<
   Equal<

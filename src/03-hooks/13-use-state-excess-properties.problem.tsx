@@ -10,6 +10,7 @@ export const Tags = () => {
     tags: [],
     tagSelected: null,
   });
+
   return (
     <div>
       {state.tags.map((tag) => {
@@ -17,10 +18,9 @@ export const Tags = () => {
           <button
             key={tag.id}
             onClick={() => {
-              setState((currentState) => ({
+              setState((currentState): TagState => ({
                 ...currentState,
-                // @ts-expect-error
-                tagselected: tag.id,
+                tagSelected: tag.id,
               }));
             }}
           >
@@ -30,15 +30,13 @@ export const Tags = () => {
       })}
       <button
         onClick={() => {
-          setState((currentState) => ({
+          setState((currentState): TagState => ({
             ...currentState,
             tags: [
               ...currentState.tags,
               {
                 id: new Date().getTime(),
                 value: "New",
-                // @ts-expect-error
-                otherValue: "something",
               },
             ],
           }));
@@ -49,3 +47,9 @@ export const Tags = () => {
     </div>
   );
 };
+
+/**
+ * TypeScript doesn't care about excess props inside objects. What I need to do is force
+ * object comparison by typing the return of the function as the type used.
+ * So, I should always favor object comparison instead of function comparison.
+*/
